@@ -4,6 +4,9 @@ with lib;
 
 let
  cfg = config.my.desktop-gnome;
+ gsconnectPkgs = import (builtins.fetchTarball {
+   url = https://github.com/etu/nixpkgs/archive/init-gsconnect.tar.gz;
+ }) {};
 
 in {
   options = {
@@ -42,6 +45,7 @@ in {
       gnome3.gnome-tweak-tool
       gnomeExtensions.dash-to-dock
       gnomeExtensions.topicons-plus
+      gsconnectPkgs.gnomeExtensions.gsconnect
     ];
 
     # Without this the gsettings overrides won't work.
